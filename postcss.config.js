@@ -1,0 +1,20 @@
+const fontMagician = require('postcss-font-magician')
+const preset = require('postcss-preset-env')
+
+module.exports = {
+  plugins: [
+    preset({
+      stage: 0
+    }),
+    fontMagician({
+      display: 'swap',
+      variants: {
+        Roboto: {
+          300: [],
+          400: [],
+          700: []
+        }
+      },
+      foundries: 'google'
+    })
+  ]

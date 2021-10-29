@@ -9,7 +9,14 @@
       "request": "launch",
       "name": "Launch Chrome against localhost",
       "url": "http://localhost:4200",
-      "webRoot": "${workspaceFolder}"
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true,
+      "disableNetworkCache": true,
+      // we have multiple js source folders, so some source maps are still generated with webpack protocol links. Don't know why?
+      "sourceMapPathOverrides": {
+        // if you override this, you MUST provide all defaults again
+        "webpack:///.": "${webRoot}" // a default
+      }
     }
   ]
 }

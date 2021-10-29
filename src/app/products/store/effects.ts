@@ -3,23 +3,20 @@ import {Actions, createEffect, ofType} from '@ngrx/effects'
 import {mergeMap, map, catchError} from 'rxjs/operators'
 import {ProductActionTypes, updateProduct} from './actions'
 import {ProductsService} from '../products.service'
-import {empty} from 'rxjs'
+import {empty, Observable} from 'rxjs'
 
 @Injectable()
 export class ProductsEffects {
-  #actions$: Actions
-  #products: ProductsService
-  public loadProducts$ = createEffect(() =>
-    this.#actions$.pipe(
-      ofType(ProductActionTypes.fetchProduct),
-      mergeMap(() =>
-        this.#products.all().pipe(map((product) => updateProduct({product}), catchError(empty)))
-      )
-    )
-  )
+  #fetchedProducts$: Observable<ReturnType<typeof updateProduct>>
 
   constructor(actions$: Actions, products: ProductsService) {
-    this.#actions$ = actions$
-    this.#products = products
+    this.#fetchedProducts$ = createEffect(() =>
+      actions$.pipe(
+        ofType(ProductActionTypes.fetchProduct),
+        mergeMap(() =>
+          products.all().pipe(map((product) => updateProduct({product}), catchError(empty)))
+        )
+      )
+    )
   }
 }

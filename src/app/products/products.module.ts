@@ -1,25 +1,26 @@
 import {NgModule} from '@angular/core'
 import {CommonModule} from '@angular/common'
-import {ProductListComponent} from './product-list/product-list.component'
+import {ProductsListComponent} from './products-list/products-list.component'
 import {reducers} from './store'
 import {StoreModule} from '@ngrx/store'
 import {HttpClientModule} from '@angular/common/http'
-import {FEATURE_KEY} from './constants'
+import {FeatureKey} from '../app.constants'
 import {EffectsModule} from '@ngrx/effects'
 import {ProductsEffects} from './store/effects'
 import {ProductsService} from './products.service'
+import {ProductsDetailComponent} from './products-detail/products-detail.component'
 
-const DECLARATIONS = [ProductListComponent]
+const declarations = [ProductsListComponent, ProductsDetailComponent]
 
 @NgModule({
-  declarations: DECLARATIONS,
+  declarations,
   imports: [
     CommonModule,
-    StoreModule.forFeature(FEATURE_KEY, reducers),
+    StoreModule.forFeature(FeatureKey.Products, reducers),
     HttpClientModule,
     EffectsModule.forFeature([ProductsEffects])
   ],
   providers: [ProductsService],
-  exports: DECLARATIONS
+  exports: declarations
 })
 export class ProductsModule {}
