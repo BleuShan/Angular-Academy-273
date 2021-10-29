@@ -11,6 +11,7 @@ export class ProductsService {
   constructor(httpClient: HttpClient) {
     this.#httpClient = httpClient
   }
+
   public all() {
     return this.#httpClient.get<Product[]>(BASE_URL).pipe(
       mergeMap((products: Product[]) => products.map(createProductRecord)),

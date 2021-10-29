@@ -16,18 +16,10 @@ export const {
 export type FeatureSelector<Key extends FeatureKey, AppState extends Record<string, unknown>> = (
   state: AppState
 ) => AppState[Key]
-
-const featureSelectorCache: Partial<Record<FeatureKey, any>> = {}
-
-export function selectFeature<State, Key extends FeatureKey>(
+export function selectFeature<State extends object, Key extends FeatureKey>(
   featureKey: Key
 ): FeatureSelector<Key, AppState<Key, State>> {
-  function selectFeatureImplementation(state: AppState<Key, State>) {
+  return function selectFeatureImplementation(state: AppState<Key, State>) {
     return state[featureKey]
   }
-  if (featureSelectorCache[featureKey] == null) {
-    featureSelectorCache[featureKey] = selectFeatureImplementation
-  }
-
-  return featureSelectorCache[featureKey]!
 }

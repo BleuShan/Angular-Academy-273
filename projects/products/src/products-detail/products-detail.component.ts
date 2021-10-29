@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core'
+import {Component, Input} from '@angular/core'
 import {Product} from '../store/state'
 
 @Component({
@@ -7,5 +7,5 @@ import {Product} from '../store/state'
   styleUrls: ['./products-detail.component.css']
 })
 export class ProductsDetailComponent {
-  @Input() product!: Readonly<Product>
+  @Input() product: Readonly<Product> | null = null
 }

@@ -9,7 +9,8 @@ import {StoreModule} from '@ngrx/store'
 import {FeatureKey} from '@demoapp/store'
 import {reducers} from './store'
 import {ProductsEffects} from './store/effects'
-import {ProductsService} from '.'
+import {ProductsService} from './services'
+import {ProductsRoutingModule} from './products-routing.module'
 
 const declarations = [ProductsListComponent, ProductsDetailComponent, ProductsComponent]
 
@@ -17,11 +18,12 @@ const declarations = [ProductsListComponent, ProductsDetailComponent, ProductsCo
   declarations,
   imports: [
     CommonModule,
+    ProductsRoutingModule,
     StoreModule.forFeature(FeatureKey.Products, reducers),
     HttpClientModule,
     EffectsModule.forFeature([ProductsEffects])
   ],
   providers: [ProductsService],
-  exports: declarations
+  exports: [...declarations, ProductsRoutingModule, EffectsModule]
 })
 export class ProductsModule {}

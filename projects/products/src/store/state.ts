@@ -6,7 +6,7 @@ export interface Product {
   description: string
   discontinued: boolean
   fixedPrice: boolean
-  price: bigint
+  price: number
   modifiedDate: Date | null
   imageUrl: string | null
 }
@@ -21,7 +21,7 @@ export const createProductRecord = Record<Product>({
   description: '',
   discontinued: false,
   fixedPrice: false,
-  price: 0n,
+  price: 0,
   modifiedDate: null,
   imageUrl: null
 })

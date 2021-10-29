@@ -11,8 +11,8 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "strict": true,
-    "target": "esnext",
-    "module": "esnext",
+    "target": "ES2020",
+    "module": "ES2020",
     "lib": ["esnext", "dom"]
   },
   "angularCompilerOptions": {

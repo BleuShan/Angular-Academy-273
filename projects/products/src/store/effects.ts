@@ -7,16 +7,16 @@ import {empty, Observable} from 'rxjs'
 
 @Injectable()
 export class ProductsEffects {
-  #fetchedProducts$: Observable<ReturnType<typeof updateProduct>>
+  fetchedProducts$: Observable<ReturnType<typeof updateProduct>>
 
   constructor(actions$: Actions, products: ProductsService) {
-    this.#fetchedProducts$ = createEffect(() =>
-      actions$.pipe(
+    this.fetchedProducts$ = createEffect(() => {
+      return actions$.pipe(
         ofType(ProductActionTypes.fetchProduct),
         mergeMap(() =>
           products.all().pipe(map((product) => updateProduct({product}), catchError(empty)))
         )
       )
-    )
+    })
   }
 }
