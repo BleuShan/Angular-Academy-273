@@ -2,6 +2,7 @@ const fontMagician = require('postcss-font-magician')
 const preset = require('postcss-preset-env')
 
 module.exports = {
+  syntax: 'postcss-scss',
   plugins: [
     preset({
       stage: 0

@@ -1,0 +1,10 @@
+import {createSelector} from '@ngrx/store'
+import {selectFeature, FeatureKey} from '@demoapp/store'
+import {ProductsState} from './state'
+
+export const selectProductFeature = selectFeature<ProductsState>(FeatureKey.Products)
+export const selectProducts = createSelector(selectProductFeature, ({products}) => products)
+export const selectProductList = createSelector(
+  selectProducts,
+  (state: ProductsState['products']) => state.values()
+)
