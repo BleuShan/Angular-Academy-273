@@ -7,8 +7,9 @@
         <mat-toolbar>
         <span>Menu</span>
       </mat-toolbar>
-      <a mat-list-item routerLink="/Home">Home</a>
-      <a mat-list-item routerLink="/Products">Products</a>
+      <a *ngFor="let linkItem of linkItems"
+        mat-list-item
+        routerLink="{{linkItem.path}}">{{linkItem.title}}</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -19,11 +20,10 @@
         mat-icon-button
         (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">Menu</mat-icon>
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>DemoApp</span>
     </mat-toolbar>
-
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

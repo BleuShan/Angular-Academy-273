@@ -1,0 +1,5 @@
+<mat-list>
+  <mat-list-item *ngFor="let product of products; trackBy: getItemId"=>
+    <products-list-item [product]="product"></products-list-item>
+  </mat-list-item>
+</mat-list>

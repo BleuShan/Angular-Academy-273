@@ -1,6 +1,6 @@
 import {createReducer, on} from '@ngrx/store'
 import {updateProduct, updateProducts} from './actions'
-import {createProductRecord, Product} from './state'
+import {createProduct, Product} from './state'
 import {Map} from 'immutable'
 
 export const products = createReducer(
@@ -8,7 +8,7 @@ export const products = createReducer(
   on(updateProducts, (state, {products}) => {
     return state.withMutations((mutableState) => {
       for (const product of products) {
-        mutableState.set(product.id, createProductRecord(product))
+        mutableState.set(product.id, createProduct(product))
       }
     })
   }),

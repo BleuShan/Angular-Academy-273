@@ -15,7 +15,7 @@ export interface ProductsState {
   products: Map<Product['id'], Readonly<Product>>
 }
 
-export const createProductRecord = Record<Product>({
+const productRecordFactory = Record<Product>({
   id: null,
   name: '',
   description: '',
@@ -25,3 +25,11 @@ export const createProductRecord = Record<Product>({
   modifiedDate: null,
   imageUrl: null
 })
+
+export function createProduct({id, price, ...rest}: Partial<Product>) {
+  if (id != null && typeof id !== 'bigint') {
+    id = BigInt(id)
+  }
+
+  return productRecordFactory({id, price, ...rest})
+}

@@ -1,5 +1,5 @@
 {
-  "name": "@demoapp/store",
+  "name": "@demoapp/core",
   "version": "0.0.1",
   "type": "module",
   "main": "dist/esm2015/index.js",

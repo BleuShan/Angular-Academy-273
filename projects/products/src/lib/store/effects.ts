@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core'
 import {Actions, createEffect, ofType} from '@ngrx/effects'
-import {mergeMap, map, catchError} from 'rxjs/operators'
+import {mergeMap, map, catchError, shareReplay} from 'rxjs/operators'
 import {ProductActionTypes, updateProduct} from './actions'
 import {ProductsService} from '../services/products.service'
-import {empty, Observable} from 'rxjs'
+import {EMPTY, Observable} from 'rxjs'
 
 @Injectable()
 export class ProductsEffects {
@@ -14,8 +14,14 @@ export class ProductsEffects {
       return actions$.pipe(
         ofType(ProductActionTypes.fetchProduct),
         mergeMap(() =>
-          products.all().pipe(map((product) => updateProduct({product}), catchError(empty)))
-        )
+          products.all().pipe(
+            map(
+              (product) => updateProduct({product}),
+              catchError(() => EMPTY)
+            )
+          )
+        ),
+        shareReplay()
       )
     })
   }

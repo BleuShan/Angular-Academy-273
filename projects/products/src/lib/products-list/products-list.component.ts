@@ -8,4 +8,7 @@ import {Product} from '../store/state'
 })
 export class ProductsListComponent {
   @Input() products: Iterable<Readonly<Product>> | null = null
+  getItemId(_: number, {id}: Product) {
+    return id
+  }
 }

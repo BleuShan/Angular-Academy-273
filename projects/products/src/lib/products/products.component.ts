@@ -3,7 +3,7 @@ import {Store} from '@ngrx/store'
 import {fetchProducts} from '../store/actions'
 import {Observable} from 'rxjs'
 import {Product, ProductsState} from '../store/state'
-import {FeatureKey, AppState} from '@demoapp/store'
+import {FeatureKey, AppState} from '@demoapp/core'
 import {selectProductList} from '../store/selectors'
 
 @Component({

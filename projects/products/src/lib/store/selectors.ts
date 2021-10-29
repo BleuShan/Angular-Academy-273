@@ -1,5 +1,5 @@
 import {createSelector} from '@ngrx/store'
-import {selectFeature, FeatureKey} from '@demoapp/store'
+import {selectFeature, FeatureKey} from '@demoapp/core'
 import {ProductsState} from './state'
 
 export const selectProductFeature = selectFeature<ProductsState, FeatureKey.Products>(

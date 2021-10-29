@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "workspaces": [
     "projects/app",
-    "projects/products",
-    "projects/store"
+    "projects/core",
+    "projects/products"
   ],
   "scripts": {
     "ng": "ng",

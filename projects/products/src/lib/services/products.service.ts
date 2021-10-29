@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core'
 import {HttpClient} from '@angular/common/http'
 import {mergeMap, shareReplay} from 'rxjs/operators'
-import {createProductRecord, Product} from '../store/state'
+import {createProduct, Product} from '../store/state'
 
 const BASE_URL = 'https://storerestservice.azurewebsites.net/api/products/'
 
@@ -14,7 +14,7 @@ export class ProductsService {
 
   public all() {
     return this.#httpClient.get<Product[]>(BASE_URL).pipe(
-      mergeMap((products: Product[]) => products.map(createProductRecord)),
+      mergeMap((products: Product[]) => products.map(createProduct)),
       shareReplay()
     )
   }

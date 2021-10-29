@@ -1,6 +1,6 @@
 import {FeatureKey} from './constants'
 
-export const FeatureKeySymbol = Symbol.for('@demoapp/store/featurekey')
+export const FeatureKeySymbol = Symbol.for('@demoapp/core/featurekey')
 export type FeatureState<K extends FeatureKey, State extends object> = State & {
   [FeatureKeySymbol]: K
 }

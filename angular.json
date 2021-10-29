@@ -35,11 +35,11 @@
         }
       }
     },
-    "store": {
+    "core": {
       "projectType": "library",
-      "root": "projects/store",
-      "sourceRoot": "projects/store/src",
-      "prefix": "store",
+      "root": "projects/core",
+      "sourceRoot": "projects/core/src",
+      "prefix": "core",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
@@ -49,14 +49,14 @@
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/store/ng-package.json"
+            "project": "projects/core/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/store/tsconfig.lib.prod.json"
+              "tsConfig": "projects/core/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/store/tsconfig.lib.json"
+              "tsConfig": "projects/core/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
